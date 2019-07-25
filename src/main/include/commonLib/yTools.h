@@ -15,16 +15,26 @@ namespace ytz5308 {
 static double deadZoneLevel = 0.14;    
 static double limitZoneLevel = 1;
 
+// return the |x| of x
+double abs(double x)
+{
+    return x > 0? x: -x;
+}
+int abs(int x)
+{
+    return x > 0? x: -x;
+}
+
 // filter noise of static input
 double deadZone(double input)
 {
-    return std::abs(input) < deadZoneLevel ? 0 : input;
+    return abs(input) < deadZoneLevel ? 0 : input;
 }
 
 // filter oversize input
 double limitZone(double input)
 {
-    return std::abs(input) < deadZoneLevel ? input : (input < 0 ? -1 : 1);
+    return abs(input) < deadZoneLevel ? input : (input < 0 ? -1 : 1);
 }
 
 
