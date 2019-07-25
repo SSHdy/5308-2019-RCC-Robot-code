@@ -8,13 +8,42 @@
 #pragma once
 
 #include <frc/commands/Subsystem.h>
+#include <frc/WPILib.h>
 
-class Drive : public frc::Subsystem {
- private:
-  // It's desirable that everything possible under private except
-  // for methods that implement subsystem capabilities
+#include <rev/CANSparkMax.h>
+#include <rev/CANEncoder.h>
 
- public:
+#include "RobotMap.h"
+
+#include "commonLib/yTools.h"
+
+using namespace ytz5308;
+
+typedef rev::CANSparkMaxLowLevel::MotorType revMotor;
+
+class Drive : public frc::Subsystem
+{
+private:
+  std::shared_ptr<rev::CANSparkMax> csm_left_frot;
+  std::shared_ptr<rev::CANSparkMax> csm_left_midd;
+  std::shared_ptr<rev::CANSparkMax> csm_left_back;
+
+  std::shared_ptr<rev::CANSparkMax> csm_rght_frot;
+  std::shared_ptr<rev::CANSparkMax> csm_rght_midd;
+  std::shared_ptr<rev::CANSparkMax> csm_rght_back;
+
+  std::shared_ptr<frc::SpeedControllerGroup> scg_left;
+  std::shared_ptr<frc::SpeedControllerGroup> scg_rght;
+
+  std::shared_ptr<frc::DifferentialDrive> drive_base;
+
+  std::shared_ptr<rev::CANEncoder> cane_left;
+  std::shared_ptr<rev::CANEncoder> cane_rght;
+
+  std::shared_ptr<frc::Joystick> polit;
+
+public:
   Drive();
   void InitDefaultCommand() override;
+  void Periodic() override;
 };
