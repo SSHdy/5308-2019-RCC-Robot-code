@@ -25,8 +25,8 @@ Drive::Drive() : Subsystem("ExampleSubsystem")
   csm_rght_midd -> SetInverted(true);
 
   //init speed controller group
-  scg_left = std::make_shared<frc::SpeedControllerGroup>(*csm_left_frot,*csm_left_midd,*csm_rght_back));
-  scg_rght = std::make_shared<frc::SpeedControllerGroup>(*csm_rght_frot,*csm_rght_midd,*csm_rght_back));
+  scg_left = std::make_shared<frc::SpeedControllerGroup>(*csm_left_frot,*csm_left_midd,*csm_rght_back);
+  scg_rght = std::make_shared<frc::SpeedControllerGroup>(*csm_rght_frot,*csm_rght_midd,*csm_rght_back);
 
   drive_base.reset(new frc::DifferentialDrive(*scg_left,*scg_rght));
 
