@@ -24,6 +24,9 @@
 // constexpr int kRangeFinderPort = 1;
 // constexpr int kRangeFinderModule = 1;
 
+constexpr int kPolit = 0;
+
+/* Drive subsystem */
 constexpr int kCsmLeftFrot = 0;
 constexpr int kCsmLeftMidd = 0;
 constexpr int kCsmLeftBack = 0;
@@ -32,4 +35,10 @@ constexpr int kCsmRghtFrot = 0;
 constexpr int kCsmRghtMidd = 0;
 constexpr int kCsmRghtBack = 0;
 
-constexpr int kPolit = 0;
+
+/* Cargo subsystem */
+constexpr int kCsmArmMain = 0;
+constexpr int kCsmArmSub  = 0;
+
+constexpr int kCsmIntakeMac = 0;
+constexpr int kVctIntakeBtm = 0;

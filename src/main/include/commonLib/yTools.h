@@ -8,34 +8,15 @@
 
 #pragma once
 
-#include <cmath>
-
 namespace ytz5308 {
-    
-static double deadZoneLevel = 0.14;    
-static double limitZoneLevel = 1;
 
 // return the |x| of x
-double abs(double x)
-{
-    return x > 0? x: -x;
-}
-int abs(int x)
-{
-    return x > 0? x: -x;
-}
+double abs(double);
 
 // filter noise of static input
-double deadZone(double input)
-{
-    return abs(input) < deadZoneLevel ? 0 : input;
-}
+double deadZone(double);
 
 // filter oversize input
-double limitZone(double input)
-{
-    return abs(input) < deadZoneLevel ? input : (input < 0 ? -1 : 1);
-}
-
+double limitZone(double);
 
 }

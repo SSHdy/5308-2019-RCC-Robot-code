@@ -7,7 +7,7 @@
 
 #include "subsystems/Drive.h"
 
-Drive::Drive() : Subsystem("ExampleSubsystem")
+Drive::Drive() : Subsystem("DriveSubsystem")
 {
 
   //init sparkmax left
@@ -41,5 +41,5 @@ void Drive::InitDefaultCommand()
 
 void Drive::Periodic()
 {
-  drive_base -> ArcadeDrive( deadZone(polit->GetY()) , deadZone(polit->GetX()) );
+  // drive_base -> ArcadeDrive( deadZone(polit->GetY()) , deadZone(polit->GetX()) );
 }
