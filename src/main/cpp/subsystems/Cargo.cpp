@@ -7,12 +7,35 @@
 
 #include "subsystems/Cargo.h"
 
-Cargo::Cargo() : Subsystem("CargoSubsystem") 
+Cargo::Cargo() : Subsystem("CargoSubsystem")
 {
-  
+  intakeInNeoSpeed = 0.6;
+  intakeIn775Speed = 0.6;
+
   //init Arm
   csm_arm_main.reset(new rev::CANSparkMax(kCsmArmMain, revMotor::kBrushless));
-  csm_arm_sub .reset(new rev::CANSparkMax(kCsmArmSub,  revMotor::kBrushless));
+  csm_arm_sub .reset(new rev::CANSparkMax(kCsmArmSub, revMotor::kBrushless));
+  cane_arm.reset(new rev::CANEncoder(*csm_arm_main));
+
+  csm_arm_sub->SetInverted(true);
+
+  scg_arm = std::make_shared<frc::SpeedControllerGroup>(*csm_arm_main, *csm_arm_sub);
+
+  //init Intake
+  csm_intake_mac.reset(new rev::CANSparkMax(kCsmIntakeMac, revMotor::kBrushless));
+  vct_intake_btm.reset(new VictorSPX(kVctIntakeBtm));
+}
+
+void Cargo::takein()
+{
+  csm_intake_mac->Set(intakeInNeoSpeed);
+  vct_intake_btm->Set(ctreMotor::PercentOutput, intakeIn775Speed);
+}
+
+void Cargo::takeout()
+{
+  csm_intake_mac->Set(-intakeInNeoSpeed);
+  vct_intake_btm->Set(ctreMotor::PercentOutput, -intakeIn775Speed);
 }
 
 void Cargo::InitDefaultCommand()
