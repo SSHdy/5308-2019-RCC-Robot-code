@@ -42,3 +42,9 @@ constexpr int kCsmArmSub  = 0;
 
 constexpr int kCsmIntakeMac = 0;
 constexpr int kVctIntakeBtm = 0;
+
+/* Pneumatics subsystem */
+constexpr int kPCMPort = 0;
+
+constexpr int kHatchSolF = 0;
+constexpr int kHatchSolB = 0;

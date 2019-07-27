@@ -12,6 +12,11 @@
 
 ExampleSubsystem Robot::m_subsystem;
 OI Robot::m_oi;
+Drive m_drive;
+Cargo m_cargo;
+Hatch m_hatch;
+Pneumatics m_pneumatics;
+
 
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);

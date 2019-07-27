@@ -17,6 +17,8 @@
 #include "subsystems/ExampleSubsystem.h"
 #include "subsystems/Drive.h"
 #include "subsystems/Cargo.h"
+#include "subsystems/Pneumatics.h"
+#include "subsystems/Hatch.h"
 
 class Robot : public frc::TimedRobot {
  public:
@@ -24,6 +26,8 @@ class Robot : public frc::TimedRobot {
   static OI m_oi;
   static Drive m_drive;
   static Cargo m_cargo;
+  static Hatch m_hatch;
+  static Pneumatics m_pneumatics;
 
   void RobotInit() override;
   void RobotPeriodic() override;
