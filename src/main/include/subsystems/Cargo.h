@@ -43,6 +43,9 @@ std::shared_ptr<VictorSPX>        vct_intake_btm;
 void takein();
 void takeout();
 
+void _armRotate(double vec);
+void ArmRotateTo(double pos);
+
 public:
   Cargo();
   void InitDefaultCommand() override;
