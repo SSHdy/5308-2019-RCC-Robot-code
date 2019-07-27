@@ -40,6 +40,8 @@ std::shared_ptr<frc::SpeedControllerGroup> scg_arm;
 std::shared_ptr<rev::CANSparkMax> csm_intake_mac;
 std::shared_ptr<VictorSPX>        vct_intake_btm;
 
+std::shared_ptr<frc::Joystick>  polit;
+
 void takein();
 void takeout();
 

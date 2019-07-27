@@ -24,6 +24,8 @@ Cargo::Cargo() : Subsystem("CargoSubsystem")
   //init Intake
   csm_intake_mac.reset(new rev::CANSparkMax(kCsmIntakeMac, revMotor::kBrushless));
   vct_intake_btm.reset(new VictorSPX(kVctIntakeBtm));
+
+  polit.reset(new frc::Joystick(kPolit));
 }
 
 void Cargo::takein()
@@ -46,4 +48,13 @@ void Cargo::InitDefaultCommand()
 
 void Cargo::Periodic()
 {
+  if(polit -> GetRawButton(3))
+  {
+    takein();
+  }
+  else if(polit -> GetRawButton(2))
+  {
+    takeout();
+  }
+
 }
