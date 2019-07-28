@@ -5,31 +5,35 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "subsystems/Hatch.h"
+#include "subsystems/Elevator.h"
 
-Hatch::Hatch() : Subsystem("Hatch") 
+Elevator::Elevator() : Subsystem("Elevator") 
 {
-  sol_hatch.reset(new frc::DoubleSolenoid(kPCMPort, kHatchSolF, kHatchSolB));
-  polit.reset(new frc::Joystick(kPolit));
+
+  polit.reset(new frc::Joystick(0));
+
+  sol_ele.reset(new frc::DoubleSolenoid(kPCMPort, kEleF, kEleB));
+
 }
 
-void Hatch::InitDefaultCommand()
+void Elevator::InitDefaultCommand() 
 {
   // Set the default command for a subsystem here.
   // SetDefaultCommand(new MySpecialCommand());
 }
 
-void Hatch::solReverse()
+void Elevator::Periodic()
 {
-  sol_hatch -> Set( (frc::DoubleSolenoid::Value) (3 - sol_hatch->Get())); 
-  printf("hatch solenoid change to ");
-  printf(sol_hatch->Get()-1?"Forward\n":"Reversed\n");
-}
-
-void Hatch::Periodic()
-{
-  if(polit->GetRawButtonPressed(3))
+  if(polit -> GetRawButtonPressed(-1))
   {
-    solReverse(); 
+    sol_ele->Set(frc::DoubleSolenoid::Value::kForward);
+  }
+  else if(polit -> GetRawButtonPressed(-1))
+  {
+    sol_ele->Set(frc::DoubleSolenoid::Value::kReverse);
+  }
+  else if(polit -> GetRawButtonPressed(-1))
+  {
+    sol_ele->Set(frc::DoubleSolenoid::Value::kOff);
   }
 }

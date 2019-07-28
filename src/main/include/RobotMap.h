@@ -48,3 +48,6 @@ constexpr int kPCMPort = 0;
 
 constexpr int kHatchSolF = 0;
 constexpr int kHatchSolB = 0;
+
+constexpr int kEleF = 0;
+constexpr int kEleB = 0;

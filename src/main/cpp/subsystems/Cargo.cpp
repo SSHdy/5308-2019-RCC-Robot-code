@@ -11,11 +11,17 @@ Cargo::Cargo() : Subsystem("CargoSubsystem")
 {
   intakeInNeoSpeed = 0.6;
   intakeIn775Speed = 0.6;
+  armUpSpeed = 0.2;
+  
+  pos2degR = 1;
 
   //init Arm
   csm_arm_main.reset(new rev::CANSparkMax(kCsmArmMain, revMotor::kBrushless));
   csm_arm_sub .reset(new rev::CANSparkMax(kCsmArmSub, revMotor::kBrushless));
   cane_arm.reset(new rev::CANEncoder(*csm_arm_main));
+
+  csm_arm_main->SetIdleMode(rev::CANSparkMax::IdleMode::kBrake);
+  csm_arm_sub ->SetIdleMode(rev::CANSparkMax::IdleMode::kBrake);
 
   csm_arm_sub->SetInverted(true);
 
@@ -26,6 +32,31 @@ Cargo::Cargo() : Subsystem("CargoSubsystem")
   vct_intake_btm.reset(new VictorSPX(kVctIntakeBtm));
 
   polit.reset(new frc::Joystick(kPolit));
+}
+
+void Cargo::_armRotate(double vec)
+{
+
+}
+
+void Cargo::ArmRotateTo(double pos)
+{
+
+}
+
+void Cargo::rotateUp()
+{
+  scg_arm->Set(armUpSpeed);
+}
+
+void Cargo::rotateDown()
+{
+  scg_arm->Set(-armUpSpeed);
+}
+
+inline double Cargo::pos2deg(double pos)
+{
+  
 }
 
 void Cargo::takein()
@@ -56,5 +87,15 @@ void Cargo::Periodic()
   {
     takeout();
   }
+
+  if(polit -> GetRawButton(7))
+  {
+    rotateUp();
+  }
+  else if(polit -> GetRawButton(8))
+  {
+    rotateDown();
+  }
+
 
 }

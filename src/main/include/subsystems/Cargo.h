@@ -30,6 +30,13 @@ private:
 
 double intakeInNeoSpeed;
 double intakeIn775Speed;
+double armUpSpeed;
+
+double pos2degR;
+
+double kp;//如果encoder的话，一定要用PID吗 // 最好
+double ki;//我跟你们讲把
+double kd;
 
 std::shared_ptr<rev::CANSparkMax> csm_arm_main;
 std::shared_ptr<rev::CANSparkMax> csm_arm_sub;
@@ -47,6 +54,11 @@ void takeout();
 
 void _armRotate(double vec);
 void ArmRotateTo(double pos);
+
+void rotateUp();
+void rotateDown();
+
+inline double pos2deg(double pos);
 
 public:
   Cargo();
