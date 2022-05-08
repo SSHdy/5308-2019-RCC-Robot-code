@@ -1,6 +1,11 @@
 # RCC 2019 Team 5308
 robot code for 5308 team in 2019 RCC competition
 # SubSystems
+-Drive
+-Cargo
+-Hatch
+-Elevator
+-Vision
 # Drive
   it is the subsystem that connect the joystick controller to the wheels of the robot. It make sure that robot can turn freely and smoothly and move in all directions.
 # Cargo
@@ -11,3 +16,6 @@ robot code for 5308 team in 2019 RCC competition
   This system is automated and it can make the robot lift itself to certain height.
 # Vision
   The system connects the Computer to the camera on the robot. Make sure driver can see the field clearly through the screen on Computer.
+# TechStack
+
+This program is built completely with C++ and WPILIB library
